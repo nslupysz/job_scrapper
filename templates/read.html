@@ -1,0 +1,48 @@
+{% extends "home.html" %}
+{% block content %}
+  <hr>
+    <form action="/download" method="GET">
+    {%for key, fr in frs.items()%}
+      <div class="textBox">
+      <span class = "recent">{{key}}</span>
+      <input type="checkbox" name={{fr}} id={{fr}}/>
+      <label for={{fr}}>
+        <a href="/recent?job={{fr}}" name={{fr}} method="GET">
+          <span>{{fr.upper()}}</span>
+        </a>
+      </label>
+      </div>
+    {%endfor%}
+      <button type="submit">Download</button>
+    </form>
+  <hr class="bold">
+  <span>NOMAD TIMES.Component {state ={</span>
+    {%for key, f in fdn.items()%}
+      <span class="box">{{f}},</span>
+    {%endfor%}
+    <span>}}</span>
+  <hr class="bottom">
+  <hr class="top">
+
+  
+  <div class="search">
+    <h1>Search Result</h1>
+  </div>
+      <section>
+        <h3>Source</h3>
+        <h3>Company</h3>
+        <h3>Title</h3>
+        <h3>keywords</h3>
+        <h3>listed</h3>
+        <h3>Apply :)</h3>
+
+        {%for d in result%}
+          <span>{{d.Source}}</span>
+          <span>{{d.company}}</span>
+          <span>{{d.Title}}</span>
+          <span>{{d.k}}</span>
+          <span>{{d.listed}}</span>
+          <a href={{d.link}} target="_blank"><span>Apply</span></a>
+        {%endfor%}
+      </section>
+{% endblock %}
